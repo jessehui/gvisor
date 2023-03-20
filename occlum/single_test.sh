@@ -123,8 +123,8 @@ do
 done
 
 if [[ $PROJECT = "ngo" ]]; then
-    yq '.resource_limits.user_space_size = "800MB" |
-        .resource_limits.kernel_space_heap_size = "100MB" |
+    yq '.resource_limits.user_space_size.max = "800MB" |
+        .resource_limits.kernel_space_heap_size.max = "200MB" |
         .process.default_stack_size = "32MB"' -i Occlum.yaml
 else
     new_json="$(jq '.resource_limits.user_space_size = "800MB" |
